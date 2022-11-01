@@ -56,4 +56,13 @@ impl<T: Float + AddAssign> Vector<T> {
             u[0]*v[1] - u[1]*v[0]
         ])
     }
+
+    pub fn abs(&self) -> Self {
+        let mut abs_vec: Vec<T> = vec![];
+        for num in &self.data {
+            abs_vec.push(num.abs());
+        }
+
+        Vector::new(&abs_vec)
+    }
 }
