@@ -56,15 +56,4 @@ impl<T: Float + AddAssign> Vector<T> {
             u[0]*v[1] - u[1]*v[0]
         ])
     }
-
-    pub fn add_vec(&self, other: &Vector<T>) -> Self {
-        assert_eq!(self.data.len(), other.data.len());
-        let mut sum_vec: Vec<T> = vec![];
-
-        for i in 0..self.data.len() {
-            sum_vec.push(self.data[i] + other.data[i]);
-        }
-
-        Vector::new(&sum_vec)
-    }
 }
