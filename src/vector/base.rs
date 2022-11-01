@@ -4,11 +4,8 @@ pub struct Vector<T> {
 }
 
 impl<T: Clone> Vector<T> {
-    pub fn new(content: Option<&Vec<T>>) -> Self {
-        match content {
-            Some(c) => Vector { content: c.to_vec() },
-            None => Vector { content: vec![] }
-        }
+    pub fn new(content: &Vec<T>) -> Self {
+        Vector { content: content.to_vec() }
     }
 
     pub fn push(&mut self, elem: T) {

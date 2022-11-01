@@ -4,9 +4,9 @@ mod utils;
 use crate::vector::base::Vector;
 
 fn main() {
-    let vec1 = vec![true, false, true];
-    let mut vector = Vector::new(Some(&vec1));
+    let mut vector = Vector::new(&vec![1.4]);
     println!("Vector: {:?}", &vector);
-    vector.push(true);
+    vector.push(2.5);
     println!("Vector: {:?}", &vector);
+    println!("Vector dot: {:?}", &vector.dot());
 }
