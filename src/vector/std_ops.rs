@@ -1,4 +1,4 @@
-use std::ops::{Mul, MulAssign, AddAssign, Add, Sub};
+use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg};
 use num::Float;
 use crate::vector::base::Vector;
 
@@ -11,6 +11,14 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
         }
 
         self
+    }
+}
+
+impl<T: Float + MulAssign> Neg for Vector<T> {
+    type Output = Vector<T>;
+
+    fn neg(self) -> Self {
+        self * T::neg(T::one())
     }
 }
 
