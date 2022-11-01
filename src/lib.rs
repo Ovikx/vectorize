@@ -1,3 +1,5 @@
+mod vector;
+
 #[cfg(test)]
 mod tests {
     /* use super::*;
