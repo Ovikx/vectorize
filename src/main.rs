@@ -11,4 +11,5 @@ fn main() {
     println!("Vector: {:?}", &vector);
     println!("Vector * 2.0 = {:?}", &v2);
     println!("Vector + 2.0 = {:?}", &v3);
+    println!("Vector dot = {:?}", vector.clone().dot());
 }
