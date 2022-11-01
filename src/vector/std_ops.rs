@@ -6,7 +6,7 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn mul(mut self, rhs: T) -> Self {
-        for item in &mut self.content {
+        for item in &mut self.data {
             *item *= rhs;
         }
 
@@ -18,7 +18,7 @@ impl <T: Float + AddAssign> Add<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn add(mut self, rhs: T) -> Self {
-        for item in &mut self.content {
+        for item in &mut self.data {
             *item += rhs;
         }
 

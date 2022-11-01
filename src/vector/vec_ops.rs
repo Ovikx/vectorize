@@ -6,7 +6,7 @@ use num::Float;
 impl<T: Float + AddAssign> Vector<T> {
     pub fn magnitude(&self) -> T {
         let mut total = T::zero();
-        for n in &self.content {
+        for n in &self.data {
             total += *n;
         }
 
@@ -15,23 +15,23 @@ impl<T: Float + AddAssign> Vector<T> {
 
     pub fn avg(&self) -> T {
         let mut total = T::zero();
-        for n in &self.content {
+        for n in &self.data {
             total += *n;
         }
 
-        total / (match T::from(*&self.content.len()) {
+        total / (match T::from(*&self.data.len()) {
             Some(n) => n,
             None => panic!("Could not get the length of the Vector")
         })
     }
 
     pub fn dot(&self, other: &Vector<T>) -> T {
-        if self.content.len() != other.content.len() {
+        if self.data.len() != other.data.len() {
             panic!("Cannot compute dot product of two vectors of unequal length");
         }
 
-        let u = &self.content;
-        let v = &other.content;
+        let u = &self.data;
+        let v = &other.data;
         let mut total = T::zero();
 
         for i in 0..u.len() {
@@ -42,12 +42,12 @@ impl<T: Float + AddAssign> Vector<T> {
     }
 
     pub fn cross(&self, other: &Vector<T>) -> Self {
-        if self.content.len() != other.content.len() {
+        if self.data.len() != other.data.len() {
             panic!("Cannot compute cross product of two vectors of unequal length");
         }
 
-        let u = &self.content;
-        let v = &other.content;
+        let u = &self.data;
+        let v = &other.data;
 
         Vector::new(&vec![
             u[1]*v[2] - u[2]*v[1],
