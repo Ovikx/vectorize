@@ -25,8 +25,24 @@ impl<T: Float + AddAssign> Vector<T> {
         })
     }
 
+    pub fn dot(&self, other: &Vector<T>) -> T {
+        if self.content.len() != other.content.len() {
+            panic!("Cannot compute dot product of two vectors of unequal length");
+        }
+
+        let u = &self.content;
+        let v = &other.content;
+        let mut total = T::zero();
+
+        for i in 0..u.len() {
+            total += u[i]*v[i];
+        }
+
+        total
+    }
+
     pub fn cross(&self, other: &Vector<T>) -> Self {
-        if *&self.content.len() != other.content.len() {
+        if self.content.len() != other.content.len() {
             panic!("Cannot compute cross product of two vectors of unequal length");
         }
 
