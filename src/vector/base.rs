@@ -10,4 +10,8 @@ impl<T: Clone> Vector<T> {
             None => Vector { content: vec![] }
         }
     }
+
+    pub fn push(&mut self, elem: T) {
+        self.content.push(elem);
+    }
 }
