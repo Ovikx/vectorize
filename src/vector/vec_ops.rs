@@ -19,7 +19,7 @@ impl<T: Float + AddAssign> Vector<T> {
             total += *n;
         }
 
-        total.div(match T::from(self.content.len()) {
+        total.div(match T::from(*&self.content.len()) {
             Some(n) => n,
             None => panic!("Could not get the length of the Vector")
         })
