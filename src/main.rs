@@ -4,14 +4,10 @@ mod utils;
 use crate::vector::base::Vector;
 
 fn main() {
-    let mut vector = Vector::new(&vec![1.4]);
-    println!("Vector: {:?}", &vector);
-    vector.push(2.5);
-    println!("Vector: {:?}", &vector);
-    println!("Vector dot: {:?}", &vector.dot(&Vector::new(&vec![1.1, 1.1])));
-    println!("Vector datas with read(): {:?}", &vector.read());
-
-    let mut vector2 = Vector::new(&vec![Vector::new(&vec![1,2,3])]);
-    vector2.data[0].push(4);
-    println!("2D vector: {:?}", &vector2);
+    let v1 = Vector::new(&vec![1.1, 0.0, -3.5]);
+    let v2 = v1.clone() * 2.0;
+    let v3 = v1.clone() + v1.clone();
+    println!("Vector 1: {:?}", &v1);
+    println!("Vector 2: {:?}", &v2);
+    println!("Vector 3: {:?}", &v3);
 }

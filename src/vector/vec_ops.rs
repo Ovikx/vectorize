@@ -4,6 +4,7 @@ use crate::vector::base::Vector;
 use num::Float;
 
 impl<T: Float + AddAssign> Vector<T> {
+    
     pub fn magnitude(&self) -> T {
         let mut total = T::zero();
         for n in &self.data {
@@ -54,5 +55,16 @@ impl<T: Float + AddAssign> Vector<T> {
             -(u[0]*v[2] - u[2]*v[0]),
             u[0]*v[1] - u[1]*v[0]
         ])
+    }
+
+    pub fn add_vec(&self, other: &Vector<T>) -> Self {
+        assert_eq!(self.data.len(), other.data.len());
+        let mut sum_vec: Vec<T> = vec![];
+
+        for i in 0..self.data.len() {
+            sum_vec.push(self.data[i] + other.data[i]);
+        }
+
+        Vector::new(&sum_vec)
     }
 }
