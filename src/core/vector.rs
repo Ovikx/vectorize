@@ -1,5 +1,5 @@
-use std::ops::Mul;
-use num::Float;
+use std::ops::{Mul, MulAssign, AddAssign, Add};
+use num::{Integer, Float, Num};
 
 #[derive(Debug, Clone)]
 pub struct Vector<T> {
@@ -15,17 +15,26 @@ impl<T: Clone> Vector<T> {
     }
 }
 
-
-
-impl<T: Float> Mul<T> for Vector<T> {
+impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     type Output = Vector<T>;
 
-    fn mul(self, rhs: T) -> Vector<T> {
-        let mut res_vec: Vector<T> = Vector { content: vec![] };
-        for item in self.content {
-            res_vec.content.push(item * rhs);
+    fn mul(mut self, rhs: T) -> Self {
+        for item in &mut self.content {
+            *item *= rhs;
         }
 
-        res_vec
+        self
+    }
+}
+
+impl <T: Float + AddAssign> Add<T> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn add(mut self, rhs: T) -> Self {
+        for item in &mut self.content {
+            *item += rhs;
+        }
+
+        self
     }
 }
