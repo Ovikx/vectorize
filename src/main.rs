@@ -9,4 +9,5 @@ fn main() {
     vector.push(2.5);
     println!("Vector: {:?}", &vector);
     println!("Vector dot: {:?}", &vector.dot(&Vector::new(&vec![1.1, 1.1])));
+    println!("Vector contents with read(): {:?}", &vector.read());
 }

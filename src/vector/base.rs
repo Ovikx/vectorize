@@ -8,6 +8,10 @@ impl<T: Clone> Vector<T> {
         Vector { content: content.to_vec() }
     }
 
+    pub fn read(&self) -> Vec<T> {
+        self.content.clone()
+    }
+
     pub fn push(&mut self, elem: T) {
         self.content.push(elem);
     }
