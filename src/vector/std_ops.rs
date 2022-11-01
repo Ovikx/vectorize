@@ -1,4 +1,4 @@
-use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg};
+use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg, Div};
 use num::Float;
 use crate::vector::base::Vector;
 
@@ -6,7 +6,7 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn mul(mut self, rhs: T) -> Self {
-        for item in &mut self.data {
+        for item in &mut self.0 {
             *item *= rhs;
         }
 
@@ -26,7 +26,7 @@ impl <T: Float + AddAssign> Add<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn add(mut self, rhs: T) -> Self {
-        for item in &mut self.data {
+        for item in &mut self.0 {
             *item += rhs;
         }
 
@@ -38,16 +38,16 @@ impl <T: Float + AddAssign> Add<Vector<T>> for Vector<T> {
     type Output = Vector<T>;
 
     fn add(self, rhs: Vector<T>) -> Self {
-        let n_iters = std::cmp::max(self.data.len(), rhs.data.len());
+        let n_iters = std::cmp::max(self.0.len(), rhs.0.len());
         let mut sum_vec: Vec<T> = vec![];
 
         for i in 0..n_iters {
-            let first = match self.data.get(i) {
+            let first = match self.0.get(i) {
                 Some(n) => *n,
                 None => T::zero()
             };
 
-            let second = match rhs.data.get(i) {
+            let second = match rhs.0.get(i) {
                 Some(n) => *n,
                 None => T::zero()
             };

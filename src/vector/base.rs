@@ -1,18 +1,16 @@
 #[derive(Debug, Clone)]
-pub struct Vector<T> {
-    pub data: Vec<T>
-}
+pub struct Vector<T> (pub Vec<T>);
 
 impl<T: Clone> Vector<T> {
     pub fn new(data: &Vec<T>) -> Self {
-        Vector { data: data.to_vec() }
+        Vector(data.to_vec())
     }
 
     pub fn read(&self) -> Vec<T> {
-        self.data.clone()
+        self.0.clone()
     }
 
     pub fn push(&mut self, elem: T) {
-        self.data.push(elem);
+        self.0.push(elem);
     }
 }
