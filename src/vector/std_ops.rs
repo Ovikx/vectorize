@@ -1,4 +1,4 @@
-use std::ops::{Mul, MulAssign, AddAssign, Add};
+use std::ops::{Mul, MulAssign, AddAssign, Add, Sub};
 use num::Float;
 use crate::vector::base::Vector;
 
@@ -48,5 +48,13 @@ impl <T: Float + AddAssign> Add<Vector<T>> for Vector<T> {
         }
 
         Vector::new(&sum_vec)
+    }
+}
+
+impl <T: Float + AddAssign + MulAssign> Sub<Vector<T>> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn sub(self, rhs: Vector<T>) -> Self {
+        self + rhs * T::neg(T::one())
     }
 }
