@@ -12,4 +12,16 @@ impl<T: Float + AddAssign> Vector<T> {
 
         total.sqrt()
     }
+
+    pub fn avg(&self) -> T {
+        let mut total = T::zero();
+        for n in &self.content {
+            total += *n;
+        }
+
+        total.div(match T::from(self.content.len()) {
+            Some(n) => n,
+            None => panic!("Could not get the length of the Vector")
+        })
+    }
 }

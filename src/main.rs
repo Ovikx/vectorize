@@ -8,5 +8,5 @@ fn main() {
     println!("Vector: {:?}", &vector);
     vector.push(2.5);
     println!("Vector: {:?}", &vector);
-    println!("Vector dot: {:?}", &vector.dot());
+    println!("Vector dot: {:?}", &vector.avg());
 }
