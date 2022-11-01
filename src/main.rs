@@ -1,7 +1,7 @@
-mod core;
+mod vector;
 mod utils;
 
-use crate::core::vector::Vector;
+use crate::vector::vector::Vector;
 
 fn main() {
     let vec1 = vec![1.1, 1.1, 1.1];

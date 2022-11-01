@@ -1,4 +1,4 @@
-pub mod core;
+pub mod vector;
 pub mod utils;
 
 #[cfg(test)]
