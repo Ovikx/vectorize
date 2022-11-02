@@ -6,7 +6,7 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn mul(mut self, rhs: T) -> Self {
-        for item in &mut self.0 {
+        for item in &mut *self {
             *item *= rhs;
         }
 
@@ -26,7 +26,7 @@ impl <T: Float + AddAssign> Add<T> for Vector<T> {
     type Output = Vector<T>;
 
     fn add(mut self, rhs: T) -> Self {
-        for item in &mut self.0 {
+        for item in &mut *self {
             *item += rhs;
         }
 
@@ -38,16 +38,16 @@ impl <T: Float + AddAssign> Add<Vector<T>> for Vector<T> {
     type Output = Vector<T>;
 
     fn add(self, rhs: Vector<T>) -> Self {
-        let n_iters = std::cmp::max(self.0.len(), rhs.0.len());
+        let n_iters = std::cmp::max((*self).len(), (*rhs).len());
         let mut sum_vec: Vec<T> = vec![];
 
         for i in 0..n_iters {
-            let first = match self.0.get(i) {
+            let first = match (*self).get(i) {
                 Some(n) => *n,
                 None => T::zero()
             };
 
-            let second = match rhs.0.get(i) {
+            let second = match (*rhs).get(i) {
                 Some(n) => *n,
                 None => T::zero()
             };
