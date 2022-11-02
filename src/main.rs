@@ -12,4 +12,8 @@ fn main() {
     println!("Vector 2: {:?}", &v2);
     println!("Vector 3: {:?}", &v3);
     println!("Vector 4: {:?}", &v4);
+
+    let mut x = Vector::new(&vec![1.1]);
+    x.push(3.2);
+    x.read();
 }
