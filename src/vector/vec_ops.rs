@@ -20,14 +20,14 @@ impl<T: Float + AddAssign> Vector<T> {
             total += *n;
         }
 
-        total / (match T::from(*&self.len()) {
+        total / (match T::from(self.len()) {
             Some(n) => n,
             None => panic!("Could not get the length of the Vector")
         })
     }
 
     pub fn dot(&self, other: &Vector<T>) -> T {
-        assert_eq!((**self).len(), (**other).len());
+        assert_eq!(self.len(), other.len());
 
         let u = &**self;
         let v = &**other;
@@ -41,7 +41,7 @@ impl<T: Float + AddAssign> Vector<T> {
     }
 
     pub fn cross(&self, other: &Vector<T>) -> Self {
-        assert_eq!((**self).len(), (**other).len());
+        assert_eq!(self.len(), other.len());
 
         let u = &**self;
         let v = &**other;

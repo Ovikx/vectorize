@@ -25,8 +25,4 @@ impl<T: Clone> Vector<T> {
     pub fn read(&self) -> Vec<T> {
         (**self).clone()
     }
-
-    pub fn push(&mut self, elem: T) {
-        (**self).push(elem);
-    }
 }
