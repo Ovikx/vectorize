@@ -11,7 +11,7 @@ fn main() {
     println!("Vector 3: {:?}", &v3);
     println!("Vector 4: {:?}", &v4);
 
-    let mut x = Vector::new(&vec![1.1]);
+    let x = Vector::new(&vec![1.1]);
     x.len();
 
 }

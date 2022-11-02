@@ -1,4 +1,4 @@
-use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg, Div};
+use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg};
 use num::Float;
 use crate::vector::base::Vector;
 
