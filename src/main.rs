@@ -1,7 +1,4 @@
-mod vector;
-mod utils;
-
-use crate::vector::base::Vector;
+use vectorize::Vector;
 
 fn main() {
     let v1 = Vector::new(&vec![1.1, 0.0, -3.5]);

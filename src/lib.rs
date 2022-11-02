@@ -1,4 +1,5 @@
-mod vector;
+pub mod vector;
+pub use vector::base::Vector;
 
 #[cfg(test)]
 mod tests {
