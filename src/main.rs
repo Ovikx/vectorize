@@ -5,7 +5,7 @@ use crate::vector::base::Vector;
 
 fn main() {
     let v1 = Vector::new(&vec![1.1, 0.0, -3.5]);
-    let v2 = v1.clone() * 2.0;
+    let v2 = 2.0 * v1.clone();
     let v3 = v1.clone() + v1.clone();
     let v4 = (-Vector::new(&vec![0.1, 23.4, 234.0, -23.0])).abs();
     println!("Vector 1: {:?}", &v1);

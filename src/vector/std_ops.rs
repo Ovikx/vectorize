@@ -14,6 +14,17 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     }
 }
 
+impl<T: Float + MulAssign> Mul<Vector<T>> for f64 {
+    type Output = Vector<T>;
+
+    fn mul(self, rhs: Vector<T>) -> Vector<T> {
+        rhs * match T::from(self) {
+            Some(n) => n,
+            None => panic!("Float could not be converted to generic")
+        }
+    }
+}
+
 impl<T: Float + MulAssign> Neg for Vector<T> {
     type Output = Vector<T>;
 
