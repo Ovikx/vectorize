@@ -14,5 +14,6 @@ fn main() {
     x = x/3.0;
     println!("Vector x: {x:?}");
     x.len();
+    println!("Ones: {:?}", Vector::zeros(10));
 
 }
