@@ -27,11 +27,15 @@ impl<T: Clone> Matrix<T> {
 
 impl Matrix<f64> {
     pub fn ones(rows: u32, cols: u32) -> Self {
+        Matrix::fill(1.0, rows, cols)
+    }
+
+    pub fn fill(value: f64, rows: u32, cols: u32) -> Self {
         let mut outer_vector: Vector<Vector<f64>> = vector![];
         for _row in 0..rows {
             let mut inner_vector: Vector<f64> = vector![];
             for _col in 0..cols {
-                inner_vector.push(1.0 as f64);
+                inner_vector.push(value);
             }
             outer_vector.push(inner_vector);
         }

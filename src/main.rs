@@ -15,6 +15,6 @@ fn main() {
     println!("Vector x: {x:?}");
     x.len();
     println!("Ones: {:?}", Vector::zeros(10));
-    println!("Ones matrix: {:?}", Matrix::ones(3, 3)*3.0);
+    println!("Ones matrix: {:?}", Matrix::fill(0.1, 3, 3)*3.0);
 
 }
