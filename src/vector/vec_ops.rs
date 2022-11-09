@@ -41,6 +41,7 @@ impl<T: Float + AddAssign> Vector<T> {
     }
 
     pub fn cross(&self, other: &Vector<T>) -> Self {
+        assert_eq!(self.len(), 3);
         assert_eq!(self.len(), other.len());
 
         let u = &**self;
