@@ -1,5 +1,7 @@
 pub mod vector;
+pub mod matrix;
 pub use vector::base::Vector;
+pub use matrix::base::Matrix;
 
 #[cfg(test)]
 mod tests {

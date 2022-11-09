@@ -14,6 +14,15 @@ impl<T: Float + MulAssign> Mul<T> for Vector<T> {
     }
 }
 
+impl<T: Float + MulAssign> MulAssign<T> for Vector<T> {
+
+    fn mul_assign(&mut self, rhs: T) {
+        for item in &mut **self {
+            *item *= rhs;
+        }
+    }
+}
+
 impl<T: Float + MulAssign> Mul<Vector<T>> for f64 {
     type Output = Vector<T>;
 

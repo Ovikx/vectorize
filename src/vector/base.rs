@@ -1,7 +1,5 @@
 use std::ops::{Deref, DerefMut};
 
-use num::Float;
-
 #[derive(Debug, Clone)]
 pub struct Vector<T> (pub Vec<T>);
 

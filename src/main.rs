@@ -1,4 +1,4 @@
-use vectorize::{vector, Vector};
+use vectorize::{vector, Vector, Matrix};
 
 fn main() {
     let v1 = vector![1.1, 0.0, -3.5];
@@ -15,5 +15,6 @@ fn main() {
     println!("Vector x: {x:?}");
     x.len();
     println!("Ones: {:?}", Vector::zeros(10));
+    println!("Ones matrix: {:?}", Matrix::ones(3, 3)*3.0);
 
 }
