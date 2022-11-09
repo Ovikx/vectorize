@@ -10,7 +10,9 @@ fn main() {
     println!("Vector 2: {:?}", &v2);
     println!("Vector 3: {:?}", &v3);
     println!("Vector 4: {:?}", &v4);
-    let x = vector![1.1];
+    let mut x = vector![1.1];
+    x = x/3.0;
+    println!("Vector x: {x:?}");
     x.len();
 
 }

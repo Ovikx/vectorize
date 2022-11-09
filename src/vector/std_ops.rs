@@ -1,4 +1,4 @@
-use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg};
+use std::ops::{Mul, MulAssign, AddAssign, Add, Sub, Neg, DivAssign, Div};
 use num::Float;
 use crate::vector::base::Vector;
 
@@ -22,6 +22,18 @@ impl<T: Float + MulAssign> Mul<Vector<T>> for f64 {
             Some(n) => n,
             None => panic!("Float could not be converted to generic")
         }
+    }
+}
+
+impl<T: Float + DivAssign + Div> Div<T> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn div(mut self, rhs: T) -> Vector<T> {
+        for item in &mut *self {
+            *item /= rhs;
+        }
+
+        self
     }
 }
 
