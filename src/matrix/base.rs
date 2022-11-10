@@ -40,7 +40,7 @@ impl<T: Clone + Debug> Debug for Matrix<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut strs: Vec<String> = vec![String::from("[")];
         for vector in &***self {
-            strs.push(format!("{:?}", vector));
+            strs.push(format!("\t{:?}", vector));
         }
         strs.push(String::from("]"));
         write!(f, "{:}", strs.join("\n"))
