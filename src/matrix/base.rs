@@ -25,11 +25,11 @@ impl<T: Clone> Matrix<T> {
         Matrix(data.clone())
     }
 
-    pub fn shape(&self) -> (i32, i32) {
-        let rows = self.len() as i32;
+    pub fn shape(&self) -> (usize, usize) {
+        let rows = self.len();
         let cols = match self.get(0) {
-            Some(row) => row.len() as i32,
-            None => 0 as i32
+            Some(row) => row.len(),
+            None => 0
         };
 
         (rows, cols)
