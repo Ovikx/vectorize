@@ -1,8 +1,9 @@
 use std::ops::{Deref, DerefMut};
+use core::fmt::Debug;
 
 use crate::{Vector, vector};
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct Matrix<T> (pub Vector<Vector<T>>);
 
 impl<T> Deref for Matrix<T> {
@@ -22,6 +23,17 @@ impl<T> DerefMut for Matrix<T> {
 impl<T: Clone> Matrix<T> {
     pub fn new(data: &Vector<Vector<T>>) -> Self {
         Matrix(data.clone())
+    }
+}
+
+impl<T: Clone + Debug> Debug for Matrix<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut strs: Vec<String> = vec![String::from("[")];
+        for vector in &***self {
+            strs.push(format!("{:?}", vector));
+        }
+        strs.push(String::from("]"));
+        write!(f, "{:}", strs.join("\n"))
     }
 }
 

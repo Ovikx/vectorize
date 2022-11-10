@@ -1,6 +1,6 @@
-use std::ops::{Deref, DerefMut};
+use std::{ops::{Deref, DerefMut}, fmt::Debug};
 
-#[derive(Debug, Clone)]
+#[derive(Clone)]
 pub struct Vector<T> (pub Vec<T>);
 
 impl<T> Deref for Vector<T> {
@@ -24,6 +24,12 @@ impl<T: Clone> Vector<T> {
 
     pub fn read(&self) -> Vec<T> {
         (**self).clone()
+    }
+}
+
+impl<T: Clone + Debug> Debug for Vector<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:?}", **self)
     }
 }
 
