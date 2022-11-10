@@ -15,6 +15,8 @@ fn main() {
     println!("Vector x: {x:?}");
     x.len();
     println!("Ones: {:?}", Vector::zeros(10));
-    println!("Ones matrix: {:?}", (Matrix::fill(1., 3, 10)));
+    let mat1 = Matrix::fill(1., 3, 10);
+    println!("Ones matrix: {:?}", &mat1);
+    println!("Matrix shape: {:?}", mat1.shape());
 
 }

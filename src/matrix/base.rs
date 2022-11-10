@@ -24,6 +24,16 @@ impl<T: Clone> Matrix<T> {
     pub fn new(data: &Vector<Vector<T>>) -> Self {
         Matrix(data.clone())
     }
+
+    pub fn shape(&self) -> (i32, i32) {
+        let rows = self.len() as i32;
+        let cols = match self.get(0) {
+            Some(row) => row.len() as i32,
+            None => 0 as i32
+        };
+
+        (rows, cols)
+    }
 }
 
 impl<T: Clone + Debug> Debug for Matrix<T> {
