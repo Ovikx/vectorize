@@ -64,4 +64,17 @@ impl Matrix<f64> {
 
         Matrix(outer_vector)
     }
+
+    pub fn identity(size: i32) -> Self {
+        let mut outer_vector: Vector<Vector<f64>> = vector![];
+        for row in 0..size {
+            let mut inner_vector: Vector<f64> = vector![];
+            for col in 0..size {
+                inner_vector.push(if row==col {1.0} else {0.0});
+            }
+            outer_vector.push(inner_vector);
+        }
+
+        Matrix(outer_vector)
+    }
 }
