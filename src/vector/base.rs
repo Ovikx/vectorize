@@ -18,12 +18,14 @@ impl<T> DerefMut for Vector<T> {
 }
 
 impl<T: Clone> Vector<T> {
+    /// Instantiates a new Vector
+    /// 
+    /// Args:
+    /// - `data`: Vec<T>
+    /// 
+    /// Returns: Vector<T>
     pub fn new(data: &Vec<T>) -> Self {
         Vector(data.to_vec())
-    }
-
-    pub fn read(&self) -> Vec<T> {
-        (**self).clone()
     }
 }
 
@@ -34,6 +36,10 @@ impl<T: Clone + Debug> Debug for Vector<T> {
 }
 
 impl Vector<f64> {
+    /// Creates a Vector of ones as floats
+    /// 
+    /// Args:
+    /// - `size`: Integer, size of the Vector
     pub fn ones(size: i32) -> Self {
         let mut vec: Vec<f64> = vec![];
 
@@ -44,6 +50,10 @@ impl Vector<f64> {
         Vector::new(&vec)
     } 
 
+    /// Creates a Vector of zeros as floats
+    /// 
+    /// Args:
+    /// - `size`: Integer, size of the Vector
     pub fn zeros(size: i32) -> Self {
         let mut vec: Vec<f64> = vec![];
 

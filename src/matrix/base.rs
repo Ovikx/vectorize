@@ -21,10 +21,19 @@ impl<T> DerefMut for Matrix<T> {
 }
 
 impl<T: Clone> Matrix<T> {
+    /// Instantiates a new Matrix from the given data
+    /// 
+    /// Args:
+    /// - `data`: 2-dimensional Vector
+    /// 
+    /// Returns: Matrix
     pub fn new(data: &Vector<Vector<T>>) -> Self {
         Matrix(data.clone())
     }
 
+    /// Returns the shape of the matrix
+    /// 
+    /// Returns: Tuple (`rows`: usize, `cols`: usize)
     pub fn shape(&self) -> (usize, usize) {
         let rows = self.len();
         let cols = match self.get(0) {
@@ -48,10 +57,25 @@ impl<T: Clone + Debug> Debug for Matrix<T> {
 }
 
 impl Matrix<f64> {
+    /// Creates a Matrix filled with ones as floats
+    /// 
+    /// Args:
+    /// - `rows`: Integer, number of rows
+    /// - `cols`: Integer, number of columns
+    /// 
+    /// Returns: Matrix of floats
     pub fn ones(rows: u32, cols: u32) -> Self {
         Matrix::fill(1.0, rows, cols)
     }
 
+    /// Creates a Matrix filled with a given value
+    /// 
+    /// Args:
+    /// - `value`: Float, the value to fill the matrix with
+    /// - `rows`: Integer, the number of rows
+    /// - `cols`: Integer, the number of columns
+    /// 
+    /// Returns: Matrix containing `value`'s
     pub fn fill(value: f64, rows: u32, cols: u32) -> Self {
         let mut outer_vector: Vector<Vector<f64>> = vector![];
         for _row in 0..rows {
@@ -65,6 +89,12 @@ impl Matrix<f64> {
         Matrix(outer_vector)
     }
 
+    /// Creates an identity matrix of a given size
+    /// 
+    /// Args:
+    /// - `size`: Integer, size of the matrix
+    /// 
+    /// Returns: Identity Matrix
     pub fn identity(size: i32) -> Self {
         let mut outer_vector: Vector<Vector<f64>> = vector![];
         for row in 0..size {
