@@ -1,4 +1,4 @@
-# Vectorize
+# Vectorize (a work in progress)
 Vector and matrix operations in Rust.
 
 # Examples
