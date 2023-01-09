@@ -107,4 +107,15 @@ impl Matrix<f64> {
 
         Matrix(outer_vector)
     }
+
+    /// Returns a matrix containing random floats in the range [0.0 - 1.0)
+    pub fn noise(rows: u32, cols: u32) -> Self {
+        let mut outer_vector: Vector<Vector<f64>> = vector![];
+        for _ in 0..rows {
+            outer_vector.push(Vector::noise(cols));
+
+        }
+
+        Matrix(outer_vector)
+    }
 }

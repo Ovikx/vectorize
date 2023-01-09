@@ -1,4 +1,5 @@
 use std::{ops::{Deref, DerefMut}, fmt::Debug};
+use rand;
 
 #[derive(Clone)]
 pub struct Vector<T> (pub Vec<T>);
@@ -47,7 +48,7 @@ impl Vector<f64> {
             vec.push(1.0 as f64);
         }
 
-        Vector::new(&vec)
+        Vector(vec)
     } 
 
     /// Creates a Vector of zeros as floats
@@ -61,6 +62,21 @@ impl Vector<f64> {
             vec.push(0.0 as f64);
         }
 
-        Vector::new(&vec)
+        Vector(vec)
+    }
+
+    /// Returns a Vector containing random floats in [0.0, 1.0)
+    /// 
+    /// ## Arguments
+    /// 
+    /// * `size` - The length of the vector
+    pub fn noise(size: u32) -> Self {
+        let mut vec = vec![];
+
+        for _ in 0..size {
+            vec.push(rand::random::<f64>());
+        };
+
+        Vector(vec)
     }
 }
