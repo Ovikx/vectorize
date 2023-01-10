@@ -28,6 +28,11 @@ impl<T: Clone> Vector<T> {
     pub fn new(data: &Vec<T>) -> Self {
         Vector(data.to_vec())
     }
+
+    /// Instantiates an empty Vector
+    pub fn empty() -> Self {
+        Vector(vec![])
+    }
 }
 
 impl<T: Clone + Debug> Debug for Vector<T> {
