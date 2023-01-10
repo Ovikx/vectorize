@@ -1,6 +1,6 @@
 use std::ops::AddAssign;
 
-use crate::vector::base::Vector;
+use crate::{vector::base::Vector, Matrix};
 use num::Float;
 
 impl<T: Float + AddAssign> Vector<T> {
@@ -52,7 +52,7 @@ impl<T: Float + AddAssign> Vector<T> {
         total
     }
 
-    /// Computes the cross product of this vector and another vector
+    /// Returns the cross product of this vector and another vector
     /// 
     /// Args:
     /// - `other`: Vector of floats
@@ -80,5 +80,24 @@ impl<T: Float + AddAssign> Vector<T> {
         }
 
         Vector::new(&abs_vec)
+    }
+}
+
+impl<T: Clone> Vector<T> {
+    /// Returns a matrix with the specified shape
+    /// 
+    /// ## Arguments
+    /// 
+    /// * `rows` - Number of rows
+    /// * `cols` - Number of columns
+    pub fn unflatten(self, rows: u32, cols: u32) -> Matrix<T> {
+        assert_eq!(rows*cols, self.len() as u32);
+        let mut matrix: Vector<Vector<T>> = Vector(vec![]);
+        let chunks = self.chunks(cols as usize);
+        for chunk in chunks {
+            matrix.push(Vector(chunk.to_vec()));
+        }
+
+        Matrix(matrix)
     }
 }

@@ -43,6 +43,16 @@ impl<T: Clone> Matrix<T> {
 
         (rows, cols)
     }
+
+    /// Returns the matrix as `Vec<Vec<T>>`
+    pub fn to_vec(&self) -> Vec<Vec<T>> {
+        let mut outer_vec: Vec<Vec<T>> = vec![];
+        for vector in self.iter() {
+            outer_vec.push(vector.to_vec());
+        }
+
+        outer_vec
+    }
 }
 
 impl<T: Clone + Debug> Debug for Matrix<T> {
@@ -110,12 +120,6 @@ impl Matrix<f64> {
 
     /// Returns a matrix containing random floats in the range [0.0 - 1.0)
     pub fn noise(rows: u32, cols: u32) -> Self {
-        let mut outer_vector: Vector<Vector<f64>> = vector![];
-        for _ in 0..rows {
-            outer_vector.push(Vector::noise(cols));
-
-        }
-
-        Matrix(outer_vector)
+        Vector::noise(rows*cols).unflatten(rows, cols)
     }
 }
