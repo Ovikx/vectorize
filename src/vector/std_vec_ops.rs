@@ -87,7 +87,7 @@ impl <T: Float + AddAssign> Add<Vector<T>> for Vector<T> {
             sum_vec.push(first + second);
         }
 
-        Vector::new(&sum_vec)
+        Vector::from(&sum_vec)
     }
 }
 

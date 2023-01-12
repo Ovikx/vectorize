@@ -65,7 +65,7 @@ impl<T: Float + AddAssign> Vector<T> {
         let u = &**self;
         let v = &**other;
 
-        Vector::new(&vec![
+        Vector::from(&vec![
             u[1]*v[2] - u[2]*v[1],
             -(u[0]*v[2] - u[2]*v[0]),
             u[0]*v[1] - u[1]*v[0]
@@ -79,7 +79,7 @@ impl<T: Float + AddAssign> Vector<T> {
             abs_vec.push(num.abs());
         }
 
-        Vector::new(&abs_vec)
+        Vector::from(&abs_vec)
     }
 }
 

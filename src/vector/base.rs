@@ -25,12 +25,12 @@ impl<T: Clone> Vector<T> {
     /// - `data`: Vec<T>
     /// 
     /// Returns: Vector<T>
-    pub fn new(data: &Vec<T>) -> Self {
+    pub fn from(data: &Vec<T>) -> Self {
         Vector(data.to_vec())
     }
 
     /// Instantiates an empty Vector
-    pub fn empty() -> Self {
+    pub fn new() -> Self {
         Vector(vec![])
     }
 }

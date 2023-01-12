@@ -27,7 +27,7 @@ impl<T: Clone> Matrix<T> {
     /// - `data`: 2-dimensional Vector
     /// 
     /// Returns: Matrix
-    pub fn new(data: &Vector<Vector<T>>) -> Self {
+    pub fn from(data: &Vector<Vector<T>>) -> Self {
         Matrix(data.clone())
     }
 
